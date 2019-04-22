@@ -31,7 +31,15 @@
   border-radius: 50%;
   background: #00ee00;
   filter: blur(2px);
-  z-index: 10;
+  z-index: -1;
+  transition: all 1s;
+  animation: emerge 2s ease-in-out ;
+}
+.hidden{
+  visibility: hidden;
+  opacity: 0;
+}
+#ManoWar{
   animation: sailOne 100s ease infinite alternate,glow 3s linear infinite; 
 }
 #radar li:nth-child(1),
@@ -93,10 +101,17 @@
   width: 180px;
   height: 180px;
   transform-origin: top left;
-  /* background: linear-gradient(45deg, #009900 0%,transparent 50%);
-  animation: animate 4s linear infinite; */
+  background: linear-gradient(45deg, #009900 0%,transparent 50%);
+  animation: animate 4s linear infinite;
 }
-
+@keyframes emerge{
+  from{
+    filter: blur(20px)   
+  }
+  to{
+    filter: blur(2px);
+  }
+}
 @keyframes animate
 {
   0%{
@@ -136,20 +151,20 @@
     left: 5%;
   }
   30%{
-    top:40%;
-    left: 90%;
+    top:20%;
+    left: 0%;
   }
   40%{
-    top:0%;
-    left: 5%;
+    top:70%;
+    left: 90%;
   }
   50%{
-    top:50%;
-    left: 90%;
+    top:10%;
+    left: 5%;
   }
   60%{
     top:90%;
-    left: 5%;
+    left: 80%;
   }
   70%{
     top:70%;
@@ -167,4 +182,5 @@
     top: 50%;
     left: 50%;
   }
+
 }

@@ -1,48 +1,69 @@
 "use strict"
-var navio = document.querySelector('.ships');
-
+var navios = document.querySelectorAll('.ships');
+var radar = document.getElementById('#radar');
 const model = {
-  numShips: 3,
+  shotsMiss: 0,
   shipsSunk: 0,
-  ships: [{
-      location: 'A6',
-      hits: ''
-    },
-    {
-      location: 'C4',
-      hits: ''
-    },
-    {
-      location: 'B0',
-      hits: ''
-    }
-  ],
+  
+  ships : [{
+    id: "ManoWar",
+    cordsY: 0,
+    cordsX: 0,
+    sank:false,
+  },{
+    id: "Destroyer",
+    cordsY: 0,
+    cordsX: 0,
+    sank:false,
+  }],
+  
 
-  fire: function (guess) {
-    // for (let ship of this.ships) {
-    //   if (guess == ship.location) {
-    //     ship.hits = 'hit';
-    //     view.displayHit(guess);
-    //     view.displayMessage('HIT!');
-    //     if (this.isSunk(ship)) {
-    //       view.displayMessage('You sank a Battleship!')
-    //       this.shipsSunk++;
-    //     }
-    //     console.log(this.shipsSunk);
-    //     return true;
-    //   }
-    // }
+  fire: function (guess,field) {
+    
+    for(let i =0 ;i< model.ships.length; i++){
+      model.ships[i].cordsY = navios[i].offsetTop;
+      model.ships[i].cordsX = navios[i].offsetLeft;
       
-    view.displayMiss(guess);
-    view.displayMessage('You missed.');
-    return false;
-  },
+      if((model.ships[i].cordsY- 30 ) < field.offsetTop && field.offsetTop < model.ships[i].cordsY + 30 && (model.ships[i].cordsX - 30 ) < field.offsetLeft && field.offsetLeft < (model.ships[i].cordsX + 30)){
+          hit(model.ships[i]);
+          return false;
+        }
+    }
 
-  isSunk: function (ship) {
-    if (ship.hits != 'hit') {
+      miss();
+
+    function hit(ship){
+      
+      if (!field.classList.contains('hit')) {
+              ship.sank = true;
+              view.displayHit(guess);
+              view.displayMessage('HIT!');
+              view.displayMessage('You sank the battleship '+ship.id)
+              model.shipsSunk++;
+                  // if (model.isSunk()) {
+                  //     view.displayMessage(' Congratuations! You sank all battleships ')     
+                  // }
+                  return true;
+          }
+          return false;
+    };
+
+    function miss(){
+      if (!field.classList.contains('miss')) {
+          model.shotsMiss++;
+          view.displayMiss(guess);
+          view.displayMessage('You missed.');
+    }
+    return false;
+  };
+},
+
+  isSunk: function () {
+    for(let i = 0; i < model.ships.length; i++)
+    if ( model.ships[i].sunk == false) {
       return false;
     }
-    return true;
+      return true;
   },
 
 };
@@ -54,19 +75,27 @@ const view = {
   },
 
   displayHit: function (location) {
-    document.getElementById(location).classList.add('hit');
+      document.getElementById(location).classList.add('hit');
   },
 
   displayMiss: function (location) {
-    if (location) {
       document.getElementById(location).classList.add('miss');
-    }
+    
   },
+  // generateShips : function(){
+  //   navios.forEach(function(el){
+  //       setTimeout(function(){
+  //         el.classList.remove('hidden');
+  //       },100000)
+  //   })
+  // },
 
+  // sunkingShip : function(sunked){
+
+  // }
 };
 
 const controller = {
-  shots: 0,
   input: document.getElementById('guessInput'),
   fireButton: document.getElementById('fireButton'),
   
@@ -117,20 +146,17 @@ const controller = {
     })
   },
   fireReady: function (campCheck) {
-    if (campCheck) {
-    let field = document.getElementById(controller.input.value);
-    
-      controller.input.addEventListener('keypress', fireEnter);
-
-      fireButton.addEventListener('click', function () {
-          console.log("Field Top: " + field.offsetTop + " Field Left: " + field.offsetLeft)
-          console.log("Navio Top: " + navio.offsetTop + " Navio Left: " + navio.offsetLeft);
-  
-        model.fire(controller.input.value);
-        controller.input.value = ""
-        controller.abort(fireEnter);
-        controller.input.focus();
+    if (campCheck) {        
+      let field = document.getElementById(campCheck);
       
+      if(!field.classList.contains('hit') && !field.classList.contains('miss')){
+        controller.input.addEventListener('keypress', fireEnter);
+
+      fireButton.addEventListener('click', function () {  
+      
+        model.fire(campCheck,field);  
+        controller.abort(fireEnter);
+        
       });
       fireButton.disabled = false;
       fireButton.classList.add('is--enabled');
@@ -140,24 +166,24 @@ const controller = {
           fireButton.click();
         }
       }
+    }else{
+      controller.abort(fireEnter);
     }
+  }
   },
   abort: function (fireEnter) {
     fireButton.disabled = true;
     fireButton.classList.remove('is--enabled');
     controller.input.removeEventListener('keypress', fireEnter);
+    controller.input.value = "";
+    controller.input.focus();
   },
 }
-
-
-
-// init - called when the page has completed loading
 
 window.onload = init;
 
 function init() {
   controller.keyPress();
 	// place the ships on the game board
-  // model.generateShipLocations();
-  
+  // view.generateShips();  
 }
