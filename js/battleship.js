@@ -1,6 +1,7 @@
 "use strict"
-var navios = document.querySelectorAll('.ships');
-var radar = document.getElementById('#radar');
+var navios = document.querySelector('.ships');
+var board = document.getElementById('board');
+
 const model = {
   shots: 0,
   shipsSunk: 0,
@@ -181,9 +182,16 @@ const controller = {
 }
 
 window.onload = init;
+var cords = document.getElementById('cords');
 
 function init() {
-  controller.keyPress();
+  // controller.keyPress();
 	// place the ships on the game board
-  // view.generateShips();  
+  // view.generateShips();
+
+  board.addEventListener('mousemove',function(e){
+    view.displayMessage("Field Top "+e.target.offsetTop +" Field Left "+e.target.offsetLeft+"\n");
+    cords.textContent = "Navio Top "+navios.offsetTop +" Navio Left "+navios.offsetLeft;
+  });
+
 }
