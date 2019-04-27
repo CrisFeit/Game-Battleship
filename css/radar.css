@@ -4,6 +4,13 @@
   width: 60%;
   /* background: url(../img/world-map-globe.png) center center / cover; */
 }
+#cords{
+  position: absolute;
+	top: 1%;
+	right: 1%;
+  color: rgb(83, 175, 19);
+  font-size: 1.3em;
+}
 .radar{
   padding: 0;
   overflow: hidden;
@@ -20,6 +27,20 @@
   box-shadow: inset 0 0 50px rgba(0,255,0,0.4);
   background: url(../img/world-map-globe.png) no-repeat -2% 75%;
   overflow:hidden;
+}
+.radar-grid{
+  display: flex;
+  flex-wrap: wrap;
+  z-index: -1;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  height: 350px;
+  opacity: 0;
+}
+.radar-grid div{
+  width: 13%;
+  height: 13%;
 }
 .ships
 {
