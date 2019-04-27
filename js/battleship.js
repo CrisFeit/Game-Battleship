@@ -2,7 +2,7 @@
 var navios = document.querySelectorAll('.ships');
 var radar = document.getElementById('#radar');
 const model = {
-  shotsMiss: 0,
+  shots: 0,
   shipsSunk: 0,
   
   ships : [{
@@ -50,7 +50,7 @@ const model = {
 
     function miss(){
       if (!field.classList.contains('miss')) {
-          model.shotsMiss++;
+          model.shots++;
           view.displayMiss(guess);
           view.displayMessage('You missed.');
     }
