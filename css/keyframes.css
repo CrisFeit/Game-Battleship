@@ -1,0 +1,148 @@
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes emerge{
+  from{
+    filter: blur(20px)   
+  }
+  to{
+    filter: blur(2px);
+  }
+}
+
+@keyframes antena
+{
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+@keyframes sail1{
+  0%{
+    top:50%;
+    right: 5%;
+  }
+  10%{
+    top:15%;
+    left: 5%;
+  }
+  10%{
+    top:10%;
+    left: 100%;
+  }
+  20%{
+    top:80%;
+    left: 5%;
+  }
+  30%{
+    top:20%;
+    left: 0%;
+  }
+  40%{
+    top:70%;
+    left: 90%;
+  }
+  50%{
+    top:10%;
+    left: 5%;
+  }
+  60%{
+    top:90%;
+    left: 80%;
+  }
+  70%{
+    top:70%;
+    left: 20%;
+  }
+  80%{
+    top: 10%;
+    left:100%;
+  }
+  90%{
+    top:100%;
+    left: 0%;
+  }
+  100%{
+    top: 50%;
+    left: 95%;
+  }
+}
+@keyframes sail2{
+  0%{
+    bottom:10%;
+    left: 22%;
+  }
+  10%{
+    bottom:77%;
+    right: 90%;
+  }
+  10%{
+    bottom:8%;
+    right: 30%;
+  }
+  20%{
+    bottom:80%;
+    right: 90%;
+  }
+  30%{
+    bottom:17%;
+    right: 6%;
+  }
+  40%{
+    bottom:70%;
+    right: 68%;
+  }
+  50%{
+    bottom:57%;
+    right: 88%;
+  }
+  60%{
+    bottom:88%;
+    right: 22%;
+  }
+  70%{
+    bottom:13%;
+    right: 77%;
+  }
+  80%{
+    bottom: 77%;
+    right:9%;
+  }
+  90%{
+    bottom:100%;
+    right: 89%;
+  }
+  100%{
+    bottom: 10%;
+    left: 22%;
+  }
+}

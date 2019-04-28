@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/board.css">
   <link rel="stylesheet" href="css/radar.css">
+  <link rel="stylesheet" href="css/keyframes.css">
   <title>Batalha Naval</title>
 </head>
 <body>
@@ -23,10 +24,10 @@
       <div id="G0" class="G0"></div><div id="G1"></div><div id="G2"></div><div id="G3"></div><div id="G4"></div><div id="G5"></div><div id="G6"></div>      
       </section>
       
-    <form action="#">
+    <div class="form" action="#">
         <input type="text" id="guessInput" placeholder="A0" maxlength="2" autofocus autocorrect="off" spellcheck="false">
         <input type="button" class="fireButton" id="fireButton" value="Fire!" disabled>
-    </form>      
+    </div>      
     </section>
 
     <section id="radar-wrap">
@@ -39,8 +40,9 @@
         <li></li>
         <li></li>
         <li></li>
-        <div class="ships " id="ManoWar"></div>
-        <section class="radar-grid">
+        <div class="ships" id="ManoWar"></div>
+        <div class="ships hidden" id="Destroyer"></div>
+        <section id="radar-grid">
             <div class="A0"></div><div class="A1"></div><div class="A2"></div><div class="A3"></div><div class="A4"></div><div class="A5"></div><div class="A6"></div>
             <div class="B0"></div><div class="B1"></div><div class="B2"></div><div class="B3"></div><div class="B4"></div><div class="B5"></div><div class="B6"></div>
             <div class="C0"></div><div class="C1"></div><div class="C2"></div><div class="C3"></div><div class="C4"></div><div class="C5"></div><div class="C6"></div>
@@ -57,6 +59,9 @@
     </section>
 
 </main>
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
+<script src="js/controller.js"></script>
 <script src="js/battleship.js"></script>
 </body>
 </html>

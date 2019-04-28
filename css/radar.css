@@ -26,42 +26,51 @@
   border: solid 10px rgba(105, 105, 105,0.3); 
   box-shadow: inset 0 0 50px rgba(0,255,0,0.4);
   background: url(../img/world-map-globe.png) no-repeat -2% 75%;
-  overflow:hidden;
+  display: flex;
 }
-.radar-grid{
+#radar-grid{
   display: flex;
   flex-wrap: wrap;
   z-index: -1;
   justify-content: space-around;
   align-items: center;
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   opacity: 0;
 }
-.radar-grid div{
+#radar-grid div{
   width: 13%;
   height: 13%;
 }
 .ships
 {
   position: absolute;
-  top: 80%;
-  left: 55%;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #00ee00;
   filter: blur(2px);
   z-index: -1;
-  transition: all 1s;
-  animation: emerge 2s ease-in-out ;
+  transition: all 2s;
+}
+#ManoWar{
+  animation: glow 3s linear infinite,
+              sail1 100s ease infinite alternate; 
+}
+#Destroyer{
+  animation: glow 3s linear infinite,
+              sail2 100s ease infinite alternate;
+}
+
+.hitted{
+  transition: all 5s;
+  background-color: #b1150a !important;
+  opacity: 1;
+  filter: blur(5px);
 }
 .hidden{
   visibility: hidden;
   opacity: 0;
-}
-#ManoWar{
-  animation: sailOne 100s ease infinite alternate,glow 3s linear infinite; 
 }
 #radar li:nth-child(1),
 #radar li:nth-child(2),
@@ -123,85 +132,6 @@
   height: 180px;
   transform-origin: top left;
   background: linear-gradient(45deg, #009900 0%,transparent 50%);
-  animation: animate 4s linear infinite;
-}
-@keyframes emerge{
-  from{
-    filter: blur(20px)   
-  }
-  to{
-    filter: blur(2px);
-  }
-}
-@keyframes animate
-{
-  0%{
-      transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
+  animation: antena 4s linear infinite;
 }
 
-@keyframes glow{
-  0%{
-    opacity: 0;
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}
-@keyframes sailOne{
-  0%{
-    top:50%;
-    right: 1%;
-  }
-  10%{
-    top:15%;
-    left: 5%;
-  }
-  10%{
-    top:10%;
-    left: 100%;
-  }
-  20%{
-    top:80%;
-    left: 5%;
-  }
-  30%{
-    top:20%;
-    left: 0%;
-  }
-  40%{
-    top:70%;
-    left: 90%;
-  }
-  50%{
-    top:10%;
-    left: 5%;
-  }
-  60%{
-    top:90%;
-    left: 80%;
-  }
-  70%{
-    top:70%;
-    left: 20%;
-  }
-  80%{
-    top: 10%;
-    left:100%;
-  }
-  90%{
-    top:100%;
-    left: 0%;
-  }
-  100%{
-    top: 50%;
-    left: 50%;
-  }
-
-}

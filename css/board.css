@@ -5,7 +5,6 @@ ol, ul {
 a{
   text-decoration: none;
 }
-/* background: url(../img/world-map-globe.png) top center/ 80% no-repeat #000000; */
 body{
   background-color: #000;
   font: 1rem/1.5 'Black Ops One',sans-serif;
@@ -60,14 +59,16 @@ div#messageArea {
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center center;
+  animation: shake 0.8s both;
 }
 .miss {
   background-image: url("../img/miss.png");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center center;
+  animation: shake 0.8s both;
 }
-form {
+.form {
   position: absolute;
   right: 0;
   bottom: 3%;
@@ -79,7 +80,7 @@ form {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-form input {
+.form input {
 	border: 1px groove #000; 
   outline: none;
   font: 1em/1 'Black Ops One',sans-serif;
