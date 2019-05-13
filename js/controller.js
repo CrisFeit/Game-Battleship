@@ -1,7 +1,9 @@
 const controller = {
   input: document.getElementById('guessInput'),
   fireButton: document.getElementById('fireButton'),
-
+  btnStart: document.getElementById('start'),
+  btnStop: document.getElementById('stop'),
+  btnRank: document.getElementById('rank'),
 
   keyPress: function () {
     this.input.addEventListener('input', function (e) {
@@ -51,6 +53,7 @@ const controller = {
   },
 
   fireReady: function (campCheck) {
+    if(campCheck){
     let field = document.getElementById(campCheck);
 
     if (!field.classList.contains('hit') && !field.classList.contains('miss')) {
@@ -71,8 +74,12 @@ const controller = {
           fireButton.click();
         }
       }
+    }else{
+      view.displayMessage('Marked Field');
+      controller.abort(fireEnter);
     }
     return false;
+  }
   },
 
   abort: function (fireEnter) {

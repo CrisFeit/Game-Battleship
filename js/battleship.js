@@ -1,10 +1,14 @@
 "use strict"
 const navios = document.querySelectorAll('.ships');
-const radar = document.getElementById('radar-grid');
 
 function init() {
-  controller.keyPress();
-	// place the ships on the game board
+  view.start();
   view.generateShips();
+  controller.keyPress();
+  controller.btnStop.onclick = view.stop;
 }
-window.onload = init;
+
+document.addEventListener('DOMContentLoaded',function(){
+  controller.btnStart.onclick = init;
+  controller.btnRank.onclick = view.rank;
+});
