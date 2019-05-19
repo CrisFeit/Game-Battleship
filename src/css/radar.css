@@ -1,0 +1,159 @@
+#radar-wrap{
+  display: flex;
+  flex: 1;
+  width: 60%;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.radar{
+  display: flex;  
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  width: 350px;
+  height: 350px;
+  border: solid 10px #111; 
+  box-shadow: inset 0 0 50px rgba(0,255,0,0.4);
+  background: url(../img/world-map-globe.png) center center / cover;   
+}
+@media (max-width:700px){
+  .radar{
+    width: 250px;
+    height: 250px;
+  }
+  #radar-wrap{
+    height: auto;
+  }
+}
+@media (max-width:500px){
+  .radar{
+    width: 200px;
+    height: 200px;
+  }
+  #radar-wrap{
+    height: auto;
+  }
+}
+.radar-map{
+  animation: map ease 5s forwards;
+  transition: all 0.3s; 
+} 
+#radar-grid{
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 5;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#radar-grid div{
+  width: 13%;
+  height: 13%;
+}
+.ships
+{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ee00;
+  filter: blur(2px);
+  z-index: -1;
+  transition: all 2s;
+}
+.manoWar{
+  animation: glow 4s ease infinite,
+              sail1 100s ease infinite alternate; 
+}
+.destroyer{
+  animation: glow 4s ease infinite,
+              sail2 100s linear infinite alternate;
+}
+.silence{
+  animation: glowSilence 3s ease infinite,
+              sail3 100s ease infinite alternate;
+}
+
+.hitted{
+  animation-play-state: paused;
+  background-color: #b1150a;
+}
+.sunk{
+  animation-play-state: paused;
+  transition: all 5s;
+  background-color: #b1150a;
+  opacity: 1;
+  filter: blur(5px);
+}
+#radar li:nth-child(1),
+#radar li:nth-child(2),
+#radar li:nth-child(3),
+#radar li:nth-child(4)
+{
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width:100%;
+  background: rgba(83, 175, 19,0.5); 
+  border-radius: 50%;
+}
+
+#radar li:nth-child(2)
+{
+  transform: rotate(90deg);
+}
+
+#radar li:nth-child(3)
+{
+  transform: rotate(45deg);
+}
+#radar li:nth-child(4)
+{
+  transform: rotate(-45deg);
+}
+#radar li:nth-child(5),
+#radar li:nth-child(6)
+{
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid rgba(83, 175, 19,0.5);
+  background: transparent;
+  border-radius: 50%;
+}
+#radar li:nth-child(5)
+{
+  width: 100px;
+  height: 100px;
+}
+#radar li:nth-child(6)
+{
+  width: 240px;
+  height: 240px;
+}
+
+.antena{
+  width: 180px;
+  height: 180px;
+  display: inline;
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform-origin: top left;
+  background: linear-gradient(45deg, #009900 0%,transparent 50%);
+  animation: antena 4s linear infinite;
+}
+.hidden{
+  visibility: hidden;
+  opacity: 0;
+  animation-play-state: paused;
+}
