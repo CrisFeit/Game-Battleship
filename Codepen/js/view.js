@@ -1,5 +1,3 @@
-import model from './model.js'
-import controller from './controller.js'
 const view = {
   navios :document.querySelectorAll('.ships'),
   message: document.getElementById('messageArea'),
@@ -185,5 +183,3 @@ const view = {
     });
   },
 };
-
-export default view
