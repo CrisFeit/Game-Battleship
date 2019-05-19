@@ -18,7 +18,7 @@ const model = {
     cordsX: 0,
     res: 2,
   }],
-  
+  init : false,
   
   fire: function (guess, field) {
     shot();
@@ -53,8 +53,8 @@ const model = {
         }
         view.displayHit(guess);
         if (model.isSunk()) {
+          view.displayMessage(' Congratulations! You sank all battleships ');
           setTimeout(function () {
-            view.displayMessage(' Congratulations! You sank all battleships ');
             view.displayEndMessage('Mission Complete');
             view.finish();
             view.end(model.getScore.score());
@@ -91,6 +91,10 @@ const model = {
         total:0,
       }
 
+      if(!model.init){
+        return false;
+      }
+
       let min = document.getElementById('min').firstChild.data 
       let sec = document.getElementById('sec').firstChild.data
       points.time = (parseFloat(min) *60 + parseFloat(sec)) ;
@@ -102,8 +106,8 @@ const model = {
           points.shotsMiss++ ;
         }
       });
-      navios.forEach(el =>{
-        if(el.classList.contains('sunk')){
+      model.ships.forEach(navio =>{
+        if(navio.res === 0){
           points.shipsSunk++;
         }
       });

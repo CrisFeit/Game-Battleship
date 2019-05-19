@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/keyframes.css">
-  <link rel="stylesheet" href="css/controls.css">
-  <link rel="stylesheet" href="css/board.css">
-  <link rel="stylesheet" href="css/radar.css">
-  <link rel="stylesheet" href="css/score.css">
-  <link rel="stylesheet" href="css/rank.css">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/keyframes.css">
+    <link rel="stylesheet" href="css/controls.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/radar.css">
+    <link rel="stylesheet" href="css/score.css">
+    <link rel="stylesheet" href="css/rank.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-messaging.js"></script>
   <title>Batalha Naval</title>
 </head>
 
@@ -37,7 +42,7 @@
           <button id="rank" class="controls rank">RANK</button>
         </nav>
       </header>
-      <div id="countDown"  class="countDown"><span id="min">03</span><span>:</span><span id="sec">00</span></div>
+      <div id="countDown"  class="countDown"><span id="min">00</span><span>:</span><span id="sec">00</span></div>
       <ul id="radar" class="radar">
         <li></li><li></li><li></li><li></li><li></li><li></li><li class="antena hidden"></li>
         <div class="ships silence hidden" id="Silence"></div>
@@ -51,26 +56,28 @@
 
     <section id="overlay" class="overlay">
        <div id="modal" class="modal">
-         <h3 id="messageEnd">Mission End </h3>
-          <ul class="point-list">
-            <li class="point-list-item"><strong>Shots hits</strong> <span id="shotsHit"></span> </li>
-            <li class="point-list-item"><strong>Shots Missed</strong> <span id="shotsMiss"></span></li>
-            <li class="point-list-item"><strong>Ships Sunk</strong> <span id="shipsSunk"></span></li>
-            <li class="point-list-item"><strong>Time left</strong> <span id="time"> </span></li>
-            <li class="point-list-item"><strong>Score</strong> <span id="total"> </span></li>
-          </ul>
+         <h3 id="messageEnd">End of Mission</h3>
+        <ul class="point-list">
+          <li class="point-list-item"><strong>Shots hits</strong> <span id="shotsHit"></span> </li>
+          <li class="point-list-item"><strong>Shots Missed</strong> <span id="shotsMiss"></span></li>
+          <li class="point-list-item"><strong>Ships Sunk</strong> <span id="shipsSunk"></span></li>
+          <li class="point-list-item"><strong>Time left</strong> <span id="time"> </span></li>
+          <li class="point-list-item"><strong>Score</strong> <span id="total"> </span></li>
+        </ul>
+        <form id="rank-form" class="rank-form">
+            <input type="name" name="name" id="rank-name" class="rank-name" placeholder="War Name" maxlength="20" autofocus autocorrect="off" spellcheck="false" disabled>
+            <button id="save-score" class="controls save-score" disabled>Save Score</button>
+        </form>
       </div>
     </section>
         <aside id="rank-wrap" class="rank-wrap">
           <div id="rank-container" class="rank-container">
             <h3 id="rank-title" class="rank-title">Rank</h3>
-            <ol id="rank-list" class="rank-list">
-            <li id="rank-list-item" class="rank-list-item"> <strong>Alpha</strong>\s <span>548</span></li>
-            <li id="rank-list-item" class="rank-list-item"></strong>Bravo</strong>\s <span>646</span></li>
-            </ol>
+            <ol id="rank-list" class="rank-list"></ol>
           </div>
         </aside>
   </main>
+  <script src="js/connection.js"></script>
   <script src="js/model.js"></script>
   <script src="js/view.js"></script>
   <script src="js/controller.js"></script>

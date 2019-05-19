@@ -4,6 +4,9 @@ const controller = {
   btnStart: document.getElementById('start'),
   btnStop: document.getElementById('stop'),
   btnRank: document.getElementById('rank'),
+  btnSave: document.getElementById('save-score'),
+  inputName: document.getElementById('rank-name'),
+  form: document.getElementById('rank-form'),
 
   keyPress: function () {
     this.input.addEventListener('input', function (e) {
@@ -53,33 +56,33 @@ const controller = {
   },
 
   fireReady: function (campCheck) {
-    if(campCheck){
-    let field = document.getElementById(campCheck);
+    if (campCheck) {
+      let field = document.getElementById(campCheck);
 
-    if (!field.classList.contains('hit') && !field.classList.contains('miss')) {
-      fireButton.disabled = false;
-      fireButton.classList.add('is--enabled');
-      controller.input.addEventListener('keypress', fireEnter);
-      fireButton.onclick = shoot;
+      if (!field.classList.contains('hit') && !field.classList.contains('miss')) {
+        fireButton.disabled = false;
+        fireButton.classList.add('is--enabled');
+        controller.input.addEventListener('keypress', fireEnter);
+        fireButton.onclick = shoot;
 
-      function shoot() {
-        let valor = controller.input.value;
-        field = document.getElementById(valor);
-        model.fire(valor, field);
-        controller.abort(fireEnter);
-      };
+        function shoot() {
+          let valor = controller.input.value;
+          field = document.getElementById(valor);
+          model.fire(valor, field);
+          controller.abort(fireEnter);
+        };
 
-      function fireEnter(e) {
-        if (e.keyCode === 13) {
-          fireButton.click();
+        function fireEnter(e) {
+          if (e.keyCode === 13) {
+            fireButton.click();
+          }
         }
+      } else {
+        view.displayMessage('Marked Field');
+        controller.abort(fireEnter);
       }
-    }else{
-      view.displayMessage('Marked Field');
-      controller.abort(fireEnter);
+      return false;
     }
-    return false;
-  }
   },
 
   abort: function (fireEnter) {
@@ -90,4 +93,69 @@ const controller = {
     controller.input.focus();
   },
 
+  addRank: function () {
+    controller.form.classList.add('fade-in');
+    controller.btnSave.disabled = false;
+    controller.inputName.disabled = false;
+
+    controller.inputName.addEventListener('focusin', () => {
+      controller.inputName.classList.remove('is-invalid');
+    });
+
+    controller.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let currentScore = model.getScore.score().total;
+      let warName = controller.inputName.value;
+
+      console.log("Without trim"+warName);
+      
+      console.log("Input "+warName.trim().toUpperCase());
+      if (warName.length == 0 || warName.length > 20) {
+        controller.inputName.classList.add('is-invalid');
+        return;
+      }
+      if (currentScore > 800 || !model.init) {
+        warName = "Invalid Score"
+        controller.inputName.classList.add('is-invalid');
+        setTimeout(() => {
+          view.stop();
+        }, 5000);
+        return;
+      }
+
+      db.collection('rank').get().then(snapshot => {
+        let doc = snapshot.docs;
+        for (let i = 0; i < doc.length; i++) {
+          if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score >= currentScore) {
+            console.log('data Name :'+doc[i].data().name.toUpperCase())
+            warName = "Can't be done";
+            controller.inputName.classList.add('is-invalid');
+            return;
+
+          } else if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score < currentScore) {
+            db.collection('rank').doc(doc[i].data().id).update({
+              score: currentScore
+            });
+            controller.form.classList.remove('fade-in');
+            setTimeout(() => {
+              controller.form.remove();
+              view.renderRank();
+            }, 2000);
+            return;
+
+          } else if (i + 1 === doc.length) {
+            db.collection('rank').add({
+              name: warName,
+              score: currentScore
+            });
+            controller.form.classList.remove('fade-in');
+            setTimeout(() => {
+              controller.form.remove();
+              view.renderRank();
+            }, 2000);
+          }
+        };
+      });
+    });
+  },
 }

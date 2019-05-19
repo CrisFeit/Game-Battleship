@@ -4,14 +4,15 @@ const view = {
   antena: document.querySelector('.antena'),
   mapa: document.getElementById('radar'),
   cronometro: document.getElementById('countDown'),
-  interval : null,
-  points : document.querySelectorAll('.point-list-item span'),
-  overlay : document.getElementById('overlay'),
-  modal : document.getElementById('modal'),
+  interval: null,
+  points: document.querySelectorAll('.point-list-item span'),
+  overlay: document.getElementById('overlay'),
+  modal: document.getElementById('modal'),
   list: document.getElementsByClassName('point-list-item'),
-  rankList : document.getElementById('rank-wrap'),
+  rankList: document.getElementById('rank-wrap'),
 
   start: function () {
+    model.init =true;
     this.mapa.classList.add('radar-map');
     controller.btnStart.classList.add('is-active');
     controller.btnStart.disabled = true;
@@ -30,6 +31,7 @@ const view = {
   finish: () => {
     clearInterval(view.interval);
     view.mapa.querySelector('.antena').style.animationPlayState = 'paused';
+    view.cronometro.style.animationPlayState = 'paused';
     controller.btnStart.classList.remove('is-active');
     controller.input.disabled = true;
     controller.btnStop.disabled = true;
@@ -56,10 +58,10 @@ const view = {
       for (var i = 0; i <= max; i++) {
         myList.push(i);
       }
-      myList.sort( function(a,b) {
+      myList.sort(function (a, b) {
         return Math.round(Math.random() * 2) - 1;
       });
-      var myNums = myList.splice(0, max+1);
+      var myNums = myList.splice(0, max + 1);
       return myNums;
     }
   },
@@ -75,8 +77,8 @@ const view = {
   displayMiss: function (location) {
     document.getElementById(location).classList.add('miss');
   },
-  displayEndMessage: function(msg){
-    this.messageEnd.textContent = msg ;
+  displayEndMessage: function (msg) {
+    this.messageEnd.textContent = msg;
   },
   damage: function (navio, status) {
     if (status === 'hit') {
@@ -101,15 +103,14 @@ const view = {
     }, 250000);
 
     function time() {
-      let s = 30;
-      let m = 0;
+      let s = 60;
+      let m = 2;
 
       view.interval = setInterval(() => {
         if (s == 0) {
           m--;
           s = 60;
         }
-
         if (m < 10) document.getElementById("min").textContent = "0" + m;
         else document.getElementById("min").textContent = m;
         s--;
@@ -123,22 +124,20 @@ const view = {
       }, 1000);
     };
   },
-  end:function(score){
-
+  end: function (score) {
     view.overlay.classList.add('display');
-    view.messageEnd.classList.add('title-animation');
-    view.points.forEach(function(el){
-      for(prop in score){
-        if(el.getAttribute('id') == prop){
+    view.points.forEach(function (el) {
+      for (prop in score) {
+        if (el.getAttribute('id') == prop) {
           el.textContent = score[prop];
         }
       }
     })
-    setTimeout(()=>{
+    setTimeout(() => {
       view.modal.classList.add('display');
-    },2000);
+    }, 2000);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       let i = 0;
       let scores = setInterval(() => {
         view.list[i].classList.add('display');
@@ -147,18 +146,38 @@ const view = {
           clearInterval(scores);
         }
       }, 2000);
-    },3000);
-    setTimeout(()=>{
+    }, 3000);
+    setTimeout(() => {
       controller.btnStop.disabled = false;
       controller.btnStop.style.zIndex = '9';
       controller.btnRank.disabled = false;
-    },18000);
+      controller.addRank();
+    }, 16000);
   },
-  rank : function(){
-
-    view.overlay.classList.toggle('display');
-    view.rankList.classList.toggle('show-rank');
-
-      //Fetch Firebase
-  }
+  rank: function () {
+    if (view.modal.classList.contains('display')) {
+      view.rankList.classList.toggle('show-rank');
+    } else {
+      view.overlay.classList.toggle('display');
+      view.rankList.classList.toggle('show-rank');
+    }
+  },
+  renderRank: function () {
+    db.collection('rank').orderBy('score','desc').get().then(snapshot =>{
+      snapshot.docs.forEach(doc => {
+        let li = document.createElement('li');
+        let name = document.createElement('strong');
+        let score = document.createElement('span');
+        
+        li.setAttribute('data-id', doc.id);
+        name.textContent = doc.data().name;
+        score.textContent = doc.data().score;
+        
+        name.appendChild(score);
+        li.appendChild(name);
+        
+        rankList.appendChild(li); 
+      });
+    });
+  },
 };

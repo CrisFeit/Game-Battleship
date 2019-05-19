@@ -16,21 +16,26 @@
 .modal{
   display: none;
   margin: auto;
-  width: 25vw;
+  max-width: 250px;
   height: 50vh;
   flex-direction: column;
   opacity: 0;
   transition: display 0s ease-in-out,
                 opacity 3s ease-in-out 4s;
 }
+
 #messageEnd{
   align-self: center;
   width: auto;
+  white-space: nowrap;
   background: linear-gradient(135deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
   -webkit-background-clip:text;
   background-clip: text;
   color: transparent;
   font-size: 1.5rem;
+  background-size: 300% 300%;
+  -webkit-animation: camuflage 6s linear infinite;
+  animation: camuflage 6s linear infinite;
 }
 .point-list{
   width: 100%;
