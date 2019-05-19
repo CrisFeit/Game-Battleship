@@ -12,7 +12,7 @@ function compress() {
             cascade: false
         }))
         // .pipe(minify())
-        .pipe(gulp.dest('./battleship/css'));
+        .pipe(gulp.dest('./dist/css'));
 }
 
 gulp.task('mainCss', compress);
@@ -24,7 +24,7 @@ function gulpJS() {
                 transform: ['babelify'],
             }))
         // .pipe(uglify())
-        .pipe(gulp.dest('./battleship/js/'));
+        .pipe(gulp.dest('./dist/js/'));
 }
 
 gulp.task('mainJs', gulpJS);

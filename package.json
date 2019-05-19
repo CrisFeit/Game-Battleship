@@ -5,11 +5,11 @@
     "main": "index.js",
     "scripts": {
         "start": "gulp --color && gulp watch --color",
-        "deploy":"gh-pages -d battleship"
+        "deploy":"gh-pages -d dist"
     },
     "author": "@cristianosoldier",
     "license": "ISC",
-    "homepage": "https://cristrocha.github.io/battleship",
+    "homepage": "https://CristRocha.github.io/battleship",
     "dependencies": {
         "@babel/core": "^7.1.2",
         "@babel/preset-env": "^7.1.0",
