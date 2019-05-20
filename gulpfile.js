@@ -2,16 +2,15 @@
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
-const minify = require('gulp-minify');
 const browserify = require('gulp-browserify');
-
+const cleanCSS = require('gulp-clean-css');
 function compress() {
     return gulp.src('./src/css/*.css')
         .pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        // .pipe(minify())
+        .pipe(cleanCSS())
         .pipe(gulp.dest('./dist/css'));
 }
 
@@ -23,7 +22,7 @@ function gulpJS() {
             {
                 transform: ['babelify'],
             }))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('./dist/js/'));
 }
 

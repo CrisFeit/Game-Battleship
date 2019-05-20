@@ -89,7 +89,7 @@ main{
   font-size: 1.3em;
 }
 .hit {
-  background-image: url("../img/ship.png");
+  background-image: url("https://raw.githubusercontent.com/CristRocha/battleship/gh-pages/img/ship.png");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center center;
@@ -97,7 +97,7 @@ main{
   animation: shake 0.8s both;
 }
 .miss {
-  background-image: url("../img/miss.png");
+  background-image: url("https://raw.githubusercontent.com/CristRocha/battleship/gh-pages/img/miss.png");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center center;

@@ -33,6 +33,7 @@
         "whatwg-fetch": "^3.0.0"
     },
     "devDependencies": {
-        "babel-preset-es2015": "^6.24.1"
+        "babel-preset-es2015": "^6.24.1",
+        "gulp-clean-css": "^4.2.0"
     }
 }
