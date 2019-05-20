@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: background-color 0.4s;
   outline: none;
+  font-size: larger;
 }
 .controls:hover{
   background-color: slateblue;
@@ -59,7 +60,7 @@ nav{
 }
 @media (max-width:500px){
   .title{
-    font-size: 0.5rem;
+    font-size: large;
     white-space: nowrap;
   }
 }
@@ -72,7 +73,7 @@ nav{
   visibility: hidden;
   width: 100%;
   color: rgba(83, 175, 19,0.8);
-  font-size: 1.3em;
+  font-size: large;
   margin: auto;
 }
 #min,#sec{
