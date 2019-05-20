@@ -69,7 +69,7 @@ nav{
   animation: camuflage 10s linear infinite ;
 }
 .countDown{
-  display: none;
+  visibility: hidden;
   width: 100%;
   color: rgba(83, 175, 19,0.8);
   font-size: 1.3em;

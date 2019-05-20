@@ -98,7 +98,7 @@ const view = {
     time();
 
     setTimeout(() => {
-      this.cronometro.style.display = 'block';
+      this.cronometro.style.visibility = 'visible';
     }, 60000);
 
     setTimeout(() => {
