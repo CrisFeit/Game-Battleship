@@ -31,7 +31,6 @@ main{
   position: relative;
   width: fit-content;
   height: fit-content;
-  flex-shrink: 0;
 }
 .board-img{
   max-width: 100%;
