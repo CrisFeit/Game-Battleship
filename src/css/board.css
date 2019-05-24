@@ -26,6 +26,7 @@ main{
   flex-wrap: wrap-reverse;
   align-items: center;
 }
+
 #board{
   position: relative;
   width: fit-content;
@@ -37,12 +38,6 @@ main{
   max-height:90%;
 }
 
-@media (max-width:500px){
-  .form{
-    top: 15px;
-    bottom: auto !important;
-  }
-}
 .grid{
   position: absolute;
   margin: auto;
@@ -124,4 +119,24 @@ input[type='text']{
 .is--enabled{
   color: #fff;
   background-color: rgb(155, 10, 10);
+}
+
+@media (max-width:768px){
+  body{
+    font-size:0.6rem;
+  }
+  .form{
+    display: none !important;
+  }
+  main{
+    overflow: hidden;
+  }
+  #messageArea{
+    font-size: small;
+  }
+}
+@media (orientation:landscape){
+  .container{
+    flex-wrap: nowrap;
+  }
 }

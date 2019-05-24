@@ -180,6 +180,7 @@ const view = {
         
         view.rankList.appendChild(li); 
       });
+      return;
     });
   },
 };

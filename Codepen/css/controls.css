@@ -1,3 +1,4 @@
+
 .controls{
   font-family: inherit;
   border: none;
@@ -11,7 +12,9 @@
   -o-transition: background-color 0.4s;
   transition: background-color 0.4s;
   outline: none;
+  font-size: 1.2em;
 }
+
 .controls:hover{
   background-color: slateblue;
 }
@@ -62,7 +65,7 @@ nav{
   margin: 0 auto;
   width: 100%;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 1em;
   background: -webkit-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
   background: -o-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
@@ -72,22 +75,17 @@ nav{
   color: transparent;
   z-index: 10;
 }
-@media (max-width:500px){
-  .title{
-    font-size: 0.5rem;
-    white-space: nowrap;
-  }
-}
+
 .title-animation{
   background-size: 300% 300%;
   -webkit-animation: camuflage 10s linear infinite;
   animation: camuflage 10s linear infinite ;
 }
 .countDown{
-  /* display: none; */
+  visibility: hidden;
   width: 100%;
   color: rgba(83, 175, 19,0.8);
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin: auto;
 }
 #min,#sec{
@@ -125,7 +123,6 @@ nav{
 }
 
 /* Rank */
-
 .rank-wrap{
   position: fixed;
   left: -100%;
@@ -158,7 +155,7 @@ nav{
   border: 10px solid #000;
   border-radius: 2px;
  }
-.rank-title{
+.rank-title{ 
   width: 100%;
   background: -webkit-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
   background: -o-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
@@ -166,7 +163,7 @@ nav{
   -webkit-background-clip:text;
   background-clip: text;
   color: transparent;
-  font-size: 1.5rem;
+  font-size: 1.8em;
   background-size: 300% 300%;
   -webkit-animation: camuflage 6s linear infinite;
   animation: camuflage 6s linear infinite;
@@ -187,14 +184,10 @@ nav{
 .rank-list li{
   margin-left:5px;
   width: 100%;
+  font-size: 1.3em;
 }
 .rank-list strong{
-  background: -webkit-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
-  background: -o-linear-gradient(315deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
-  background: linear-gradient(135deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
-  -webkit-background-clip:text;
-  background-clip: text;
-  color: transparent;
+  color: limegreen;
   text-align: left;
   display: inline-block;
   width: 100%;
@@ -214,7 +207,8 @@ font-weight: 300;
   left: 0;
 }
 
-/* Score */
+/* score */
+
 
 .overlay{
   display: none;
@@ -263,7 +257,7 @@ font-weight: 300;
   -webkit-background-clip:text;
   background-clip: text;
   color: transparent;
-  font-size: 1.5rem;
+  font-size: 1.6em;
   background-size: 300% 300%;
   -webkit-animation: camuflage 6s linear infinite;
   animation: camuflage 6s linear infinite;
@@ -293,6 +287,7 @@ font-weight: 300;
   -webkit-transition: opacity 1s ease;
   -o-transition: opacity 1s ease;
   transition: opacity 1s ease; 
+  font-size:1.3em;
 }
 .point-list-item strong{
   font-weight: 300;

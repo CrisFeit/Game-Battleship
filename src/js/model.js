@@ -25,6 +25,7 @@ const model = {
     shot();
     
     function shot() {
+      let size = document.getElementById('radar-grid').firstElementChild.offsetWidth /2.5;
       let grid = radar.getElementsByClassName(guess)[0];
       let gridY = grid.offsetTop + grid.offsetHeight / 2;
       let gridX = grid.offsetLeft + grid.offsetWidth / 2;
@@ -33,7 +34,7 @@ const model = {
         model.ships[i].cordsY = view.navios[i].offsetTop + view.navios[i].offsetHeight / 2;
         model.ships[i].cordsX = view.navios[i].offsetLeft + view.navios[i].offsetWidth / 2;
         
-        if ((model.ships[i].cordsY - 20) < gridY && gridY < model.ships[i].cordsY + 20 && (model.ships[i].cordsX - 20) < gridX && gridX < (model.ships[i].cordsX + 20)) {
+        if ((model.ships[i].cordsY - size) < gridY && gridY < model.ships[i].cordsY + size && (model.ships[i].cordsX - size) < gridX && gridX < (model.ships[i].cordsX + size)) {
           hit(model.ships[i], view.navios[i]);
         }
       }

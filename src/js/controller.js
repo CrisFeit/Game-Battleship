@@ -6,9 +6,11 @@ const controller = {
   btnStart: document.getElementById('start'),
   btnStop: document.getElementById('stop'),
   btnRank: document.getElementById('rank'),
+  rankTitle: document.getElementById('rank-title'),
   btnSave: document.getElementById('save-score'),
   inputName: document.getElementById('rank-name'),
   form: document.getElementById('rank-form'),
+  grid: document.getElementById('grid'),
 
   keyPress: function () {
     this.input.addEventListener('input', function (e) {
@@ -55,6 +57,11 @@ const controller = {
         }
       }
     })
+    this.grid.addEventListener('touchend',function(ev){
+      let touch = ev.target.getAttribute('id');
+      
+      model.fire(touch, ev.target);
+    });
   },
 
   fireReady: function (campCheck) {
@@ -116,7 +123,7 @@ const controller = {
         controller.inputName.classList.add('is-invalid');
         return;
       }
-      if (currentScore > 800 || !model.init) {
+      if (currentScore > 600 || !model.init) {
         warName = "Invalid Score"
         controller.inputName.classList.add('is-invalid');
         setTimeout(() => {
@@ -135,7 +142,7 @@ const controller = {
             return;
 
           } else if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score < currentScore) {
-            db.collection('rank').doc(doc[i].data().id).update({
+            db.collection('rank').doc(doc[i].id).update({
               score: currentScore
             });
             controller.form.classList.remove('fade-in');
@@ -155,6 +162,7 @@ const controller = {
               controller.form.remove();
               view.renderRank();
             }, 2000);
+            return;
           }
         };
       });

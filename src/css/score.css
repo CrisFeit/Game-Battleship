@@ -46,7 +46,7 @@
   -webkit-background-clip:text;
   background-clip: text;
   color: transparent;
-  font-size: 1.5rem;
+  font-size: 1.6em;
   background-size: 300% 300%;
   -webkit-animation: camuflage 6s linear infinite;
   animation: camuflage 6s linear infinite;
@@ -76,6 +76,7 @@
   -webkit-transition: opacity 1s ease;
   -o-transition: opacity 1s ease;
   transition: opacity 1s ease; 
+  font-size:1.3em;
 }
 .point-list-item strong{
   font-weight: 300;

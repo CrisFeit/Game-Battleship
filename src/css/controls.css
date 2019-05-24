@@ -1,3 +1,4 @@
+
 .controls{
   font-family: inherit;
   border: none;
@@ -8,8 +9,9 @@
   cursor: pointer;
   transition: background-color 0.4s;
   outline: none;
-  font-size: larger;
+  font-size: 1.2em;
 }
+
 .controls:hover{
   background-color: slateblue;
 }
@@ -50,7 +52,7 @@ nav{
   margin: 0 auto;
   width: 100%;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1em;
   letter-spacing: 1em;
   background: linear-gradient(135deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
   -webkit-background-clip:text;
@@ -58,12 +60,7 @@ nav{
   color: transparent;
   z-index: 10;
 }
-@media (max-width:500px){
-  .title{
-    font-size: large;
-    white-space: nowrap;
-  }
-}
+
 .title-animation{
   background-size: 300% 300%;
   -webkit-animation: camuflage 10s linear infinite;
@@ -73,7 +70,7 @@ nav{
   visibility: hidden;
   width: 100%;
   color: rgba(83, 175, 19,0.8);
-  font-size: large;
+  font-size: 1.1em;
   margin: auto;
 }
 #min,#sec{

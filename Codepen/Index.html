@@ -22,7 +22,7 @@
       <section id="board">
           <div id="messageArea"></div>
       <img class="board-img" src="https://raw.githubusercontent.com/CristRocha/battleship/gh-pages/img/board.jpg" alt="tabuleiro">
-      <section class="grid">
+      <section id="grid" class="grid">
         <div id="A0"></div>   <div id="A1"></div>   <div id="A2"></div>   <div id="A3"></div>   <div id="A4"></div>   <div id="A5"></div>   <div id="A6"></div>   <div id="B0"></div>   <div id="B1"></div>   <div id="B2"></div>   <div id="B3"></div>   <div id="B4"></div>   <div id="B5"></div>   <div id="B6"></div>   <div id="C0"></div>   <div id="C1"></div>   <div id="C2"></div>   <div id="C3"></div>   <div id="C4"></div>   <div id="C5"></div>   <div id="C6"></div>   <div id="D0"></div>   <div id="D1"></div>   <div id="D2"></div>   <div id="D3"></div>   <div id="D4"></div>   <div id="D5"></div>   <div id="D6"></div>   <div id="E0"></div>   <div id="E1"></div>   <div id="E2"></div>   <div id="E3"></div>   <div id="E4"></div>   <div id="E5"></div>   <div id="E6"></div>   <div id="F0"></div>   <div id="F1"></div>   <div id="F2"></div>   <div id="F3"></div>   <div id="F4"></div>   <div id="F5"></div>   <div id="F6"></div>   <div id="G0"></div>   <div id="G1"></div>   <div id="G2"></div>   <div id="G3"></div>   <div id="G4"></div>   <div id="G5"></div>   <div id="G6"></div> 
       </section>
       <div class="form">
@@ -101,6 +101,7 @@ const db = firebase.firestore();
 document.addEventListener('DOMContentLoaded',function(){
   controller.btnStart.onclick = init;
   controller.btnRank.onclick = view.rank;
+  controller.rankTitle.onclick = view.rank;
   view.renderRank();
 });
   </script>

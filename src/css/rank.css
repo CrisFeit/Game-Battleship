@@ -32,7 +32,7 @@
   -webkit-background-clip:text;
   background-clip: text;
   color: transparent;
-  font-size: x-large;
+  font-size: 1.8em;
   background-size: 300% 300%;
   -webkit-animation: camuflage 6s linear infinite;
   animation: camuflage 6s linear infinite;
@@ -47,13 +47,10 @@
 .rank-list li{
   margin-left:5px;
   width: 100%;
-  font-size: larger;
+  font-size: 1.3em;
 }
 .rank-list strong{
-  background: linear-gradient(135deg, rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8),rgba(83, 175, 19,0.2),rgba(83, 175, 19,0.8));
-  -webkit-background-clip:text;
-  background-clip: text;
-  color: transparent;
+  color: limegreen;
   text-align: left;
   display: inline-block;
   width: 100%;
