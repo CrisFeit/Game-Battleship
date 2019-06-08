@@ -9,7 +9,7 @@
     },
     "author": "@cristianosoldier",
     "license": "ISC",
-    "homepage": "https://cristrocha.github.io/battleship/",
+    "homepage": "https://cristrocha.github.io/MVC-Battleship/",
     "dependencies": {
         "@babel/core": "^7.1.2",
         "@babel/preset-env": "^7.1.0",
