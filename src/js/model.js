@@ -1,4 +1,3 @@
-import view from './view.js'
 const model = {
 
   square: document.querySelectorAll('.grid div'),
@@ -121,4 +120,3 @@ const model = {
     }
   })(),
 };
-export default model

@@ -48,6 +48,7 @@
   filter: blur(2px);
   z-index: -1;
   transition: all 2s;
+  will-change: opacity,background-color,animation-play-state,filter;
 }
 .manoWar{
   animation: glow 4s ease infinite,
@@ -134,6 +135,7 @@
   transform-origin: top left;
   background: linear-gradient(45deg, #009900 0%,transparent 50%);
   animation: antena 4s linear infinite;
+  will-change: transform;
 }
 .hidden{
   visibility: hidden;

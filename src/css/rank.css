@@ -1,13 +1,14 @@
 .rank-wrap{
   position: fixed;
-  left: -100%;
+  transform: translateX(-200%);
   top: 0;
   width: auto;
   height: 100vh;
   background-color: rgb(8,8,8);
-  transition: all 1s ease-in-out;
+  transition: transform 1s ease-in-out;
   z-index: 12;
   box-shadow:  0 0 50px 20px rgba(0,255,0,0.2);
+  will-change: transform;
 }
 .rank-container{
   color: #fff;
@@ -65,5 +66,5 @@ text-align: right;
 font-weight: 300;
 }
 .show-rank{
-  left: 0;
+  transform: translateX(0);
 }

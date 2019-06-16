@@ -10,6 +10,7 @@
   transition: background-color 0.4s;
   outline: none;
   font-size: 1.2em;
+  will-change: background-color;
 }
 
 .controls:hover{
@@ -23,6 +24,7 @@
   text-align: center;
   transition: opacity 0.4s ease-in-out;
   opacity: 0;
+  will-change: opacity;
 }
 .rank-name{
   text-align: center;

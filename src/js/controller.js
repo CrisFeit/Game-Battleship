@@ -1,5 +1,4 @@
-import view from './view.js'
-import model from './model.js'
+
 const controller = {
   input: document.getElementById('guessInput'),
   fireButton: document.getElementById('fireButton'),
@@ -169,4 +168,3 @@ const controller = {
     });
   },
 }
-export default controller

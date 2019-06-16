@@ -69,6 +69,7 @@ main{
   background-size: 90%;
   background-position: center center;
   animation: shake 0.8s both;
+  will-change: transform;
 }
 .miss {
   background-image: url("../img/miss.png");
@@ -76,6 +77,8 @@ main{
   background-size: 90%;
   background-position: center center;
   animation: shake 0.8s both;
+  will-change: transform;
+
 }
 .form {
   position: absolute;

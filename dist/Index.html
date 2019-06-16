@@ -5,12 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/keyframes.css">
-    <link rel="stylesheet" href="css/controls.css">
-    <link rel="stylesheet" href="css/board.css">
-    <link rel="stylesheet" href="css/radar.css">
-    <link rel="stylesheet" href="css/score.css">
-    <link rel="stylesheet" href="css/rank.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
   <title>Batalha Naval</title>
@@ -75,24 +70,6 @@
           </div>
         </aside>
   </main>
-  <script>
-var firebaseConfig = {
-  apiKey: "AIzaSyAsOckeBlx0P8kg8XRr66XwkIT_T6VHJms",
-  authDomain: "battleship-web-2cde3.firebaseapp.com",
-  databaseURL: "https://battleship-web-2cde3.firebaseio.com",
-  projectId: "battleship-web-2cde3",
-  storageBucket: "battleship-web-2cde3.appspot.com",
-  messagingSenderId: "22663135008",
-  appId: "1:22663135008:web:f6fb7dd2cc5a7aee"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-  </script>
-  <script src="js/model.js"></script>
-  <script src="js/view.js"></script>
-  <script src="js/controller.js"></script>
-  <script src="js/init.js"></script>
+  <script src="js/bundle.js"></script>
 </body>
-
 </html>

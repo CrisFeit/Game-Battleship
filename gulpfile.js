@@ -4,8 +4,10 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const browserify = require('gulp-browserify');
 const cleanCSS = require('gulp-clean-css');
+const concat = require('gulp-concat');
 function compress() {
     return gulp.src('./src/css/*.css')
+        .pipe(concat('style.css'))
         .pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
@@ -17,11 +19,9 @@ function compress() {
 gulp.task('mainCss', compress);
 
 function gulpJS() {
-    return gulp.src('./src/js/*.js')
-        .pipe(browserify(
-            {
-                transform: ['babelify'],
-            }))
+    return gulp.src(['./src/js/model.js','./src/js/view.js','./src/js/controller.js','./src/js/init.js'])
+        .pipe(concat('bundle.js'))
+        .pipe(browserify({transform: ['babelify'],}))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/js/'));
 }

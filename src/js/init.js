@@ -1,5 +1,3 @@
-import view from './view.js'
-import controller from './controller.js'
 function init() {
   view.start();
   view.generateShips();
