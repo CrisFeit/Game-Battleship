@@ -115,9 +115,6 @@ const controller = {
       let currentScore = model.getScore.score().total;
       let warName = controller.inputName.value;
 
-      console.log("Without trim"+warName);
-      
-      console.log("Input "+warName.trim().toUpperCase());
       if (warName.length == 0 || warName.length > 20) {
         controller.inputName.classList.add('is-invalid');
         return;
@@ -135,7 +132,7 @@ const controller = {
         let doc = snapshot.docs;
         for (let i = 0; i < doc.length; i++) {
           if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score >= currentScore) {
-            console.log('data Name :'+doc[i].data().name.toUpperCase())
+            
             warName = "Can't be done";
             controller.inputName.classList.add('is-invalid');
             return;
