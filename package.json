@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "gulp --color && gulp watch --color",
-        "deploy": "gulp --color && gh-pages -d dist"
+        "build": "gulp --color",
+        "deploy": "gh-pages -d dist"
     },
     "author": "@cristianosoldier",
     "license": "ISC",
@@ -17,6 +18,7 @@
         "babel-core": "^6.26.3",
         "babel-preset-env": "^1.6.1",
         "babelify": "^10.0.0",
+        "browserify": "^16.2.3",
         "gh-pages": "^2.0.1",
         "gulp": "^4.0.0",
         "gulp-autoprefixer": "^5.0.0",

@@ -1,10 +1,10 @@
-//Definição dos Modulos a serem utilizados no projeto
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const browserify = require('gulp-browserify');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
+
 function compress() {
     return gulp.src('./src/css/*.css')
         .pipe(concat('style.css'))
