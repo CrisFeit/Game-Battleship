@@ -7,12 +7,12 @@ const concat = require('gulp-concat');
 
 function compress() {
     return gulp.src('./src/css/*.css')
-        .pipe(concat('style.css'))
+        // .pipe(concat('style.css'))
         .pipe(autoprefixer({
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(cleanCSS())
+        // .pipe(cleanCSS())
         .pipe(gulp.dest('./dist/css'));
 }
 
@@ -20,9 +20,9 @@ gulp.task('mainCss', compress);
 
 function gulpJS() {
     return gulp.src(['./src/js/model.js','./src/js/view.js','./src/js/controller.js','./src/js/init.js'])
-        .pipe(concat('bundle.js'))
+        // .pipe(concat('bundle.js'))
         .pipe(browserify({transform: ['babelify'],}))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest('./dist/js/'));
 }
 
