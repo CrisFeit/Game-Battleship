@@ -131,13 +131,13 @@ const controller = {
       db.collection('rank').get().then(snapshot => {
         let doc = snapshot.docs;
         for (let i = 0; i < doc.length; i++) {
-          if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score >= currentScore) {
+          if (doc[i].data().name.trim().toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score >= currentScore) {
             
             warName = "Can't be done";
             controller.inputName.classList.add('is-invalid');
             return;
 
-          } else if (doc[i].data().name.toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score < currentScore) {
+          } else if (doc[i].data().name.trim().toUpperCase() == warName.trim().toUpperCase() && doc[i].data().score < currentScore) {
             db.collection('rank').doc(doc[i].id).update({
               score: currentScore
             });
@@ -158,7 +158,6 @@ const controller = {
               controller.form.remove();
               view.renderRank();
             }, 2000);
-            return;
           }
         };
       });
